@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+    <element name="Movies">
+        <complexType mixed="true">
+            <sequence>
+                <element name="Anio" maxOccurs="1" minOccurs="1">
+                    <simpleType>
+                        <restriction base="decimal">
+                            <minInclusive value="1900"/>
+                            <maxInclusive value="2017"/>
+                        </restriction>
+                    </simpleType>
+                </element>
+                <element name="Pais" minOccurs='1' maxOccurs='unbounded'>
+                    <complexType mixed="true">
+                        <sequence>   
+                            <element name="Pelicula" minOccurs='0' maxOccurs='unbounded'>
+                                <complexType mixed="true">
+                                    <sequence>
+                                        <element name="Titulo" type="string" minOccurs='1' maxOccurs='1'/>
+                                        <element name="Generos" minOccurs='1' maxOccurs='1'>
+                                            <complexType>
+                                                <sequence>
+                                                    <element name="Genero" type="string" minOccurs='0' maxOccurs='unbounded'/>
+                                                </sequence>
+                                            </complexType>
+                                        </element>
+                                        <element name="Duracion" minOccurs='1' maxOccurs='1'>
+                                            <simpleType>
+                                                <restriction base="integer">
+                                                    <minInclusive value="0"/>
+                                                    <maxExclusive value="300"/>
+                                                </restriction>
+                                            </simpleType>
+                                        </element>
+                                    <element name="Reparto" minOccurs="0" maxOccurs='unbounded'>
+                                        <complexType mixed='true'>
+                                            <sequence>
+                                                <element name="Nombre" type="string" minOccurs='1' maxOccurs='1'/>
+                                                <element name="Personaje" type="string" minOccurs='1' maxOccurs='1'/>
+                                                <element name="Oscar" minOccurs='0'>
+                                                    <simpleType>
+                                                        <restriction base="string">
+                                                            <enumeration value="Principal"/>
+                                                            <enumeration value="Secundario"/>
+                                                        </restriction>
+                                                    </simpleType>
+                                                </element>
+                                                <element name="OtraPelicula" minOccurs='0'>
+                                                    <complexType>
+                                                        <sequence>
+                                                            <choice>
+                                                                <element name="Titulo" type="string" minOccurs='1' maxOccurs='1'/>
+                                                                <element name="ip" minOccurs='1' maxOccurs='1'>
+                                                                    <simpleType>
+                                                                        <restriction base="string">
+                                                                            <pattern value="[a-zA-Z]{3}[0-9]{3}"/>
+                                                                        </restriction>
+                                                                    </simpleType>
+                                                                </element>
+                                                            </choice>
+                                                            <element name="MML" type="anyURI" minOccurs='0' maxOccurs='1'/>
+                                                        </sequence>
+                                                        <attribute name="anio" use='required'>
+                                                                <simpleType>
+                                                                    <restriction base='decimal'>
+                                                                        <minInclusive value='0'/>
+                                                                    </restriction>
+                                                                </simpleType>
+                                                        </attribute>
+                                                    </complexType>
+                                                </element>
+                                            </sequence>
+                                        </complexType>
+                                    </element>
+                                    </sequence>
+                                    <attribute name="ip" type="string" use='required'/>
+                                    <attribute name="langs" use="optional"/>
+                                </complexType>
+                           
+                            </element>
+                        </sequence>
+                        <attribute name="pais" type="string"/>
+                        <attribute name="lang" type="string"/>
+                    </complexType>
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

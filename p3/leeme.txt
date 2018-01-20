@@ -1,0 +1,17 @@
+Adrián Vázquez Saavedra 33557537-P
+cuenta: sint21
+contraseña del servicio: practica21
+
+Para la realización de la práctica 3 los Beans que he creado se llaman Anio,
+Pelicula, Actor y Film cada una de las clases correspondiente con cada una de
+las opciones de cada fase, a las páginas jsp como atributo se le pasa una
+lista de objetos de estas clases, estas clases están dentro de un paquete
+que he llamado practica3 y en que se encuentra tambien la clase Sint21P3 que
+es la clase principal
+
+Para la realización del modelo RSS se utiliza v1.0 del estándar rss el que se
+puede consultar en esta página http://web.resource.org/rss/1.0/spec y que pasa
+el validator, como links utilizo http://localhost/num donde num es un número
+
+Por último dentro de la carpeta WEB-INF he creado una carpeta lib donde meto
+jstl-1.2.jar

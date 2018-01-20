@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Registro peliculas</title>
+	<link rel="stylesheet" type="text/css" href="p1.css">
+
+</head>
+<body>
+	<h1>Registro de Peliculas</h1>
+	<Form action="p1.php" method='POST' enctype='multipart/form-data' name="formulario" onsubmit="return validar_datos()">
+		<div id="div_imagen">
+			<fieldset id="fieldImagen">
+				<input type="image" name="imagen" src="https://image.freepik.com/vector-gratis/concepto-de-marketing-en-medios_1325-48.jpg" id="image" onclick="validar_datos();" alt="enviar">
+			</fieldset>
+		</div>
+		<div id="div_datos">
+			<fieldset id="fieldDatos">
+				<table>
+					<tr>
+						<td>Titulo</td>
+						<td><input type="text" name="titulo" placeholder="Ingrese el titulo"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Director</td>
+						<td><input type="text" name="director"  placeholder="Ingrese el director"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Productora</td>
+						<td ><input type="text" name="productora" placeholder="Ingrese la productora"></td>
+						<td></td>
+					<tr>
+						<td><br></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Genero</td>
+						<td>
+							<input type="radio" name="genero" value="Accion" id="Accion" ><label for="Accion">Accion</label>
+							<input type="radio" name="genero" value="Comedia" id="Comedia"><label for="Comedia">Comedia</label>
+							<input type="radio" name="genero" value="Drama" id="Drama"><label for="Drama">Drama</label>
+							<input type="radio" name="genero" value="Terror" id="Terror"><label for="Terror">Terror</label>
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><br></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Clasificacion</td>
+						<td>
+							<select name="clasificacion">
+								<option value="TP">Todos los publicos</option>
+								<option value="+7">+7</option>
+								<option value="+13">+13</option>
+								<option value="+18">+18</option>
+							</select>
+						</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><br></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Imagen de portada</td>
+						<td  onclick="mostrarFormatoFichero()" onblur="ocultarFormatoFichero()"><input type="file" name="imagen"  onchange="comprobarImagen(this)"></td>
+						<td class="formatos"><p class="oculto" id="formatoFichero">Extensiones soportadas: png, jpg, jpeg</p></td>
+					</tr>
+					<tr>
+						<td colspan="3"><input type="button" value="Quitar imagen" onclick="quitarImagen()"></td>
+					</tr>
+				</table>
+			</fieldset>
+			<fieldset id="fieldProductora">
+				<table>
+					<tr>
+						<td>Telefono Productora</td>
+						<td onclick="mostrarTelefono()"><input type="text" name="telefono" onblur="comprobarTelefono()" placeholder="Ingrese el telefono" maxlength="9"></td>
+						<td class="formatos"><p class="oculto" id="formatoTelef">Introduzca un numero de 9 cifras</p></td>
+					</tr>
+					<tr>
+						<td>Email Productora</td>
+						<td><input type="text" name="correo" placeholder="Ingrese el email"></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Idiomas disponibles</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="ingles" id="ingles">Ingles</td>
+						<td><input type="checkbox" name="vose" id="vose">VOSE</td>
+						<td onclick="marcarTodos()"><input type="button" class="boton_check" name="marcarTodos" value="marcar todos"></td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" name="castellano" id="castellano">Castellano</td>
+						<td><input type="checkbox" name="latino" id="latino">Latino</td>
+						<td onclick="desmarcarTodos()"><input type="button" class="boton_check" name="desmarcarTodos" value="quitar todos" ></td>
+					</tr>
+				</table>
+			</fieldset>
+			<fieldset id="fieldEnvio">
+				<table>
+						<tr>
+							<td class="tablaEnvio">Metodo de envio</td>
+							<td onclick="comprobar_cod()" class="tablaEnvio">
+								<input type="radio" name="metodo" id="get" value="get">
+								<label for="get">GET</label>
+							</td>
+							<td class="tablaEnvio">
+								<input type="radio" name="metodo" id="POST" value="post">
+								<label for="POST">POST</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="tablaEnvio">Codificacion</td>
+							<td class="tablaEnvio">
+								<input type="radio" name="cod" id="unlencoded" value="x-www-form-urlencoded">
+								<label for="unlencoded">x-www-form-urlencoded</label>
+							</td>
+							<td onclick="comprobar_metodo()" class="tablaEnvio">
+								<input type="radio" name="cod" id="form-data" value="form-data">
+								<label for="form-data">form-data</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="tablaEnvio">Envio formulario</td>
+							<td class="tablaEnvio">
+								<input type="radio" name="envio" id="p1">
+								<label for="p1">p1.php</label>
+							</td>
+							<td class="tablaEnvio">
+								<input type="radio" name="envio" id="phpinfo">
+								<label for="phpinfo">phpinfo.php</label>
+							</td>
+						</tr>
+				</table>
+
+				<div id="botones_final">
+					<input type="submit" name="enviar" value="Enviar" onclick="validar_datos();">
+					<input type="reset" name="limpiar" value="Limpiar" onclick="return limpiar_formulario();">
+				</div>
+			</fieldset>
+		</div>
+		<input type="hidden" name="hora">
+		<input type="hidden" name="navegador">
+
+	</Form>
+
+	<script type="text/javascript" src="./p1.js"></script>
+</body>
+</html>
