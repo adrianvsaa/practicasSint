@@ -1,7 +1,3 @@
-Adrián Vázquez Saavedra 33557537-P
-cuenta: sint21
-contraseña del servicio: practica21
-
 Para la realización de la práctica 3 los Beans que he creado se llaman Anio,
 Pelicula, Actor y Film cada una de las clases correspondiente con cada una de
 las opciones de cada fase, a las páginas jsp como atributo se le pasa una
